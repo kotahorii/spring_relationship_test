@@ -1,11 +1,7 @@
-package com.example.hello_world.Recipe.Entity
+package com.example.hello_world.entity
 
-import java.math.BigDecimal
 import javax.persistence.*
 
-enum class Difficulty {
-    EASY, MODERATE, HARD
-}
 
 @Entity
 data class Recipe(
@@ -33,34 +29,4 @@ data class Recipe(
     val difficulty: Difficulty,
 )
 
-@Entity
-data class Ingredient(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long?,
-    val description: String?,
-    val amount: BigDecimal?,
-    @ManyToOne
-    val recipe: Recipe
-)
 
-@Entity
-data class Notes(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long?,
-    @OneToOne
-    var recipe: Recipe?,
-    @Lob
-    var notes: String?
-)
-
-@Entity
-data class Category(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long?,
-    val name: String,
-    @ManyToMany(mappedBy = "category")
-    val recipe: Set<Recipe>
-)
