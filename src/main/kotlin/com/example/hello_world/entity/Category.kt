@@ -1,6 +1,5 @@
 package com.example.hello_world.entity
 
-import Recipe
 import javax.persistence.*
 
 @Entity
